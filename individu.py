@@ -31,3 +31,6 @@ class individu:
 
 	def getGenes(self):
 		return self.tabGenes
+
+	def getFitness(self):
+		return self.score
