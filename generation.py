@@ -13,6 +13,9 @@ class generation:
             tab.append(individu())
         return tab
 
+    def setTableauIndividus(self, ind):
+        self.tabIndividus = ind
+
     def printGen(self):
         tab2 = []
         for z in range(0,len(self.tabIndividus)):
@@ -114,7 +117,7 @@ class generation:
 
     def copulation(tab1, tab2):
         tab3 = tab2[0] + tab2[1]
-        print tab3
+        #print tab3
         engeance = []
         i=0
         while i < 5:
@@ -128,5 +131,9 @@ class generation:
                 engeance.append(mutation)
             del tab3[indx]
             i+=1
-        return [engeance,tab3]
+        ind1 = individu()
+        ind1.setGenes(engeance)
+        ind2 = individu()
+        ind2.setGenes(tab3)
+        return [ind1,ind2]
 
