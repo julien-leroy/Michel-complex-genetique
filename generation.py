@@ -30,8 +30,8 @@ class generation:
         
         def fight():
 
-            rdn = randint(0, len(self.tabIndividus))
-            rdn2 = randint(0, len(self.tabIndividus))
+            rdn = randint(0, len(self.tabIndividus)-1)
+            rdn2 = randint(0, len(self.tabIndividus)-1)
             
             indiv1 = self.tabIndividus[rdn]
             indiv2 = self.tabIndividus[rdn2]
@@ -57,7 +57,7 @@ class generation:
                     continue
                 break
 
-            return theChosen
+            return theChosenTableau
 
 
         leRetourDesTableau.append(fight())

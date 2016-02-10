@@ -7,7 +7,11 @@ tabGen = []
 
 def main():
 
-	ww = world.world()
+	gen = generation()
+
+	print gen.tournament()
+
+	# ww = world.world()
 	# for x in xrange(0,10):
 	# 	nextGen()
 	# 	#print tabGen[x].tournament()
