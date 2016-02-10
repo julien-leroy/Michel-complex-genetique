@@ -1,6 +1,7 @@
 from random import *
 from individu import individu
 from randm import randm
+import time
 
 class generation:
     def __init__(self):
@@ -29,12 +30,6 @@ class generation:
         return num
 
     def RWS_(self):
-        # print sum(self.printPedro())
-        # num = 0
-        # tab = self.tabIndividus
-        # for k in range(0, len(tab)):
-        #     print tab[k].getFitness()
-        #     num += tab[k].getFitness()
         allTabs = self.printPedro()
         
         num = self.getAllFitness()
@@ -51,30 +46,17 @@ class generation:
         for j in range(0, len(allTabs)):
             for k in range (0, len(allTabs[j])):
                 theChosenOne+=allTabs[j][k]
-                # print("alltabsJK loop= ")
-                # print(allTabs[j][k])
-                # print("theChosenOne")
-                # print(theChosenOne)
                 if(theChosenOne >= index1):
                     theChosenTableau = allTabs[j]
-                    print("all tabs J")
-                    print allTabs[j]
                     break
             else:
                 continue
             break
-
         for l in range(0, len(allTabs)):
             for m in range (0, len(allTabs[l])):
                 theSecondChosenOne+=allTabs[l][m]
-                # print("alltabsLM loop= ")
-                # print(allTabs[l][m])
-                # print("theSecondChosenOne")
-                # print(theSecondChosenOne)
                 if(theSecondChosenOne >= index2):
                     theSecondChosenTableau = allTabs[l]
-                    print("all tabs L")
-                    print allTabs[l]
                     break
             else:
                 continue
@@ -82,6 +64,31 @@ class generation:
         leRetourDesTableau.append(theChosenTableau)
         leRetourDesTableau.append(theSecondChosenTableau)
         return leRetourDesTableau
+
+
+    def copulation(tab1, tab2):
+        tab3 = tab2[0] + tab2[1]
+        print tab3
+        engeance = []
+        i=0
+        while i < 5:
+            end = len(tab3)-1
+            indx = randint(0,end)
+            mutationPossible = randint(0,100)
+            if mutationPossible > 10:
+                engeance.append(tab3[indx])
+            else:
+                mutation = randint(0,10)
+                engeance.append(mutation)
+            del tab3[indx]
+            i+=1
+        return [engeance,tab3]
+
+
+
+
+
+
 
 
 
