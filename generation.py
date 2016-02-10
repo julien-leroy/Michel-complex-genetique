@@ -25,39 +25,45 @@ class generation:
         return tab2
 
     def tournament(self):
+
+        leRetourDesTableau = []
         
-
-
         def fight():
+
+            rdn = randint(0, len(self.tabIndividus))
+            rdn2 = randint(0, len(self.tabIndividus))
             
-            indiv1 = self.tabIndividus[randint(0, len(self.tabIndividus))]
-            indiv2 = self.tabIndividus[randint(0, len(self.tabIndividus))]
+            indiv1 = self.tabIndividus[rdn]
+            indiv2 = self.tabIndividus[rdn2]
 
-            RWSFitness = [indiv1.getGenes(), indiv2.getGenes()]
-            RWSIndex = randint(0, len(RWSFitness))
+            RWSTabs = [indiv1.getGenes(), indiv2.getGenes()]
+            RWSFitness = indiv1.getFitness() + indiv2.getFitness()
+            RWSIndex = randint(0, RWSFitness)
+            theChosen = 0
 
-            for j in range(0, len(RWSFitness)):
-                for k in range (0, len(RWSFitness[j])):
-                    theChosenOne+=RWSFitness[j][k]
+            for j in range(0, len(RWSTabs)):
+                for k in range (0, len(RWSTabs[j])):
+                    theChosen+=RWSTabs[j][k]
                     # print("alltabsJK loop= ")
                     # print(allTabs[j][k])
-                    # print("theChosenOne")
-                    # print(theChosenOne)
-                    if(theChosenOne >= index1):
-                        theChosenTableau = allTabs[j]
+                    # print("theChosen")
+                    # print(theChosen)
+                    if(theChosen >= RWSIndex):
+                        theChosenTableau = RWSTabs[j]
                         print("all tabs J")
-                        print allTabs[j]
+                        print RWSTabs[j]
                         break
                 else:
                     continue
                 break
 
+            return theChosen
 
-        print allTabs
 
-        # leRetourDesTableau.append(theChosenTableau)
-        # leRetourDesTableau.append(theSecondChosenTableau)
-        # return leRetourDesTableau
+        leRetourDesTableau.append(fight())
+        leRetourDesTableau.append(fight())
+        return leRetourDesTableau
+
 
     def getAllFitness(self):
         num = 0

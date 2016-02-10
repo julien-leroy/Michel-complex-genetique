@@ -13,8 +13,10 @@ def main():
 	# 	#print tabGen[x].tournament()
 	# 	raw_input()
 	
-	#print gen 
-	#print gen.printPedro()
+	# gen = generation()
+	# print gen.printPedro()
+	# fin1 = gen.tournament()
+	# print fin1()
 	# gen = generation()
 	# fin1 = gen.RWS()
 	# print gen.RWS()
