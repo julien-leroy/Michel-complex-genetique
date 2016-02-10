@@ -10,17 +10,51 @@ class generation:
     def initGeneration(self):
         tab = []
         for y in range(0,10):
-            i = individu()
-            tab.append(i.create())
+            tab.append(individu())
         return tab
 
-    def printPedro(self):
+    def printGen(self):
         tab2 = []
         for z in range(0,len(self.tabIndividus)):
             perso = self.tabIndividus[z]
             persos = perso.getGenes()
             tab2.append(persos)
         return tab2
+
+    def tournament(self):
+        
+
+
+        def fight():
+            
+            indiv1 = self.tabIndividus[randint(0, len(self.tabIndividus))]
+            indiv2 = self.tabIndividus[randint(0, len(self.tabIndividus))]
+
+            RWSFitness = [indiv1.getGenes(), indiv2.getGenes()]
+            RWSIndex = randint(0, len(RWSFitness))
+
+            for j in range(0, len(RWSFitness)):
+                for k in range (0, len(RWSFitness[j])):
+                    theChosenOne+=RWSFitness[j][k]
+                    # print("alltabsJK loop= ")
+                    # print(allTabs[j][k])
+                    # print("theChosenOne")
+                    # print(theChosenOne)
+                    if(theChosenOne >= index1):
+                        theChosenTableau = allTabs[j]
+                        print("all tabs J")
+                        print allTabs[j]
+                        break
+                else:
+                    continue
+                break
+
+
+        print allTabs
+
+        # leRetourDesTableau.append(theChosenTableau)
+        # leRetourDesTableau.append(theSecondChosenTableau)
+        # return leRetourDesTableau
 
     def getAllFitness(self):
         num = 0
@@ -29,8 +63,14 @@ class generation:
             num += tab[k].getFitness()
         return num
 
-    def RWS_(self):
-        allTabs = self.printPedro()
+    def RWS(self):
+        # print sum(self.printPedro())
+        # num = 0
+        # tab = self.tabIndividus
+        # for k in range(0, len(tab)):
+        #     print tab[k].getFitness()
+        #     num += tab[k].getFitness()
+        allTabs = self.printGen()
         
         num = self.getAllFitness()
         index1 = randint(0, num)
@@ -83,19 +123,4 @@ class generation:
             del tab3[indx]
             i+=1
         return [engeance,tab3]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
