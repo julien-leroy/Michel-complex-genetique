@@ -17,7 +17,8 @@ class individu:
 		return self
 
 	def setGenes(self, newGen):
-		self.tabGenes = newGen		
+		self.tabGenes = newGen
+		self.fitness()
 
 	def rnmdz(self):
 		liste = []

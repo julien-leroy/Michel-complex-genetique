@@ -20,6 +20,5 @@ def nextGen():
 	print("gen numero : " + str(len(tabGen) + 1))
 	tabGen.append(generation())
 
-
 if __name__ == "__main__":
     main()

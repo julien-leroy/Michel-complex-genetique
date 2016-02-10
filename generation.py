@@ -21,7 +21,37 @@ class generation:
         return tab2
 
     def tournament(self):
-        allTabs = self.printGen()
+        
+
+
+        def fight():
+            
+            indiv1 = self.tabIndividus[randint(0, len(self.tabIndividus))]
+            indiv2 = self.tabIndividus[randint(0, len(self.tabIndividus))]
+
+            RWSFitness = [indiv1.getGenes(), indiv2.getGenes()]
+            RWSIndex = randint(0, len(RWSFitness))
+
+            for j in range(0, len(RWSFitness)):
+                for k in range (0, len(RWSFitness[j])):
+                    theChosenOne+=RWSFitness[j][k]
+                    # print("alltabsJK loop= ")
+                    # print(allTabs[j][k])
+                    # print("theChosenOne")
+                    # print(theChosenOne)
+                    if(theChosenOne >= index1):
+                        theChosenTableau = allTabs[j]
+                        print("all tabs J")
+                        print allTabs[j]
+                        break
+                else:
+                    continue
+                break
+
+
+
+
+
 
         print allTabs
 
