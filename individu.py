@@ -5,8 +5,6 @@ class individu:
 	def __init__(self):
 		self.tabGenes = []
 		self.score    = 0
-		self.create()
-		print(self.tabGenes)
 		self.initGenes()
 		self.fitness()
 
@@ -19,8 +17,7 @@ class individu:
 		return self
 
 	def setGenes(self, newGen):
-		self.tabGenes = newGen
-		
+		self.tabGenes = newGen		
 
 	def rnmdz(self):
 		liste = []

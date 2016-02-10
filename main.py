@@ -7,12 +7,13 @@ tabGen = []
 def main():
 	for x in xrange(0,10):
 		nextGen()
+		print tabGen[x].tournament()
 		raw_input()
 	
-	gen = generation()
 	#print gen 
 	#print gen.printPedro()
-	print gen.RWS_()
+	# print gen.RWS()
+
 	# print gen.getAllFitness()
 
 def nextGen():

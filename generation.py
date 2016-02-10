@@ -9,8 +9,7 @@ class generation:
     def initGeneration(self):
         tab = []
         for y in range(0,10):
-            i = individu()
-            tab.append(i.create())
+            tab.append(individu())
         return tab
 
     def printGen(self):
@@ -22,7 +21,13 @@ class generation:
         return tab2
 
     def tournament(self):
-        pass
+        allTabs = self.printGen()
+
+        print allTabs
+
+        # leRetourDesTableau.append(theChosenTableau)
+        # leRetourDesTableau.append(theSecondChosenTableau)
+        # return leRetourDesTableau
 
     def getAllFitness(self):
         num = 0
@@ -31,7 +36,7 @@ class generation:
             num += tab[k].getFitness()
         return num
 
-    def RWS_(self):
+    def RWS(self):
         # print sum(self.printPedro())
         # num = 0
         # tab = self.tabIndividus
