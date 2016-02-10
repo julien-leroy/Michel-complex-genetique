@@ -22,7 +22,7 @@ class individu:
 
 	def rnmdz(self):
 		liste = []
-		for walrandDegorge in range(0,4):
+		for walrandDegorge in range(0,5):
 			liste.append(randint(0,10))
 		# print liste
 		return liste
