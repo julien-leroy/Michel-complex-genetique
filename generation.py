@@ -12,11 +12,13 @@ class generation:
             tab.append(i.create())
         return tab
 
-    def printPedro(self):
-        print("test")
+    def printGen(self):
         tab2 = []
         for z in range(0,len(self.tabIndividus)):
             perso = self.tabIndividus[z]
             persos = perso.getGenes()
             tab2.append(persos)
         return tab2
+
+    def tournament(self):
+        pass
