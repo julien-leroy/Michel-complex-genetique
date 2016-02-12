@@ -1,7 +1,7 @@
 from generation import generation
 from individu import individu
 from randm import randm
-
+import numpy as np
 class world:
 
     azeret = raw_input('Number of generations ?  ')
@@ -18,6 +18,7 @@ class world:
         n=0
         allFitness = []
         allFitnessAverage = 0
+        Variance0 = []
         while n < len(self.genInit.tabIndividus):
             print(self.genInit.tabIndividus[n].getGenes())
             n+=1
@@ -25,10 +26,10 @@ class world:
             tab = []
             allFitness.append(self.genInit.getAllFitness())
             allFitnessAverage += self.genInit.getAllFitness()
-            if(y>1):
-                print("gen numero : " + str(y) + "  Variance: " + str(allFitness[1] - allFitness[2]))
-            if(y > 2):
-                del allFitness[0]
+            for m in range(0, len(self.genInit.tabIndividus)-1):
+                Variance0 += self.genInit.tabIndividus[m].tabGenes
+                Variance1 = self.genInit.variance(Variance0)
+            print("Gen number: " + str(y) + "  Variance: " + str(Variance1))
             i=0
             #print ("allFitness: " +str(allFitness))
             while i < len(self.genInit.tabIndividus)/2:
@@ -46,7 +47,11 @@ class world:
 
         print("Avergage fitness: " + str(allFitnessAverage/(y+1)/len(self.genInit.tabIndividus)))
 
-    def nextGen():
-        print("gen numero : " + str(len(tabGen) + 1))
-        tabGen.append(generation())
 
+    def moyenne(self,tableau):
+        return sum(tableau, 0.0) / len(tableau)
+
+    def variance(self,tableau):
+        m=self.moyenne(tableau)
+        return self.moyenne([(x-m)**2 for x in tableau])
+    

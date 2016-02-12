@@ -131,3 +131,12 @@ class generation:
         ind2.setGenes(tab3)
         return [ind1,ind2]
 
+    def moyenne(self,tableau):
+        return sum(tableau, 0.0) / len(tableau)
+
+    def variance(self,tableau):
+        m=self.moyenne(tableau)
+        return self.moyenne([(x-m)**2 for x in tableau])
+    
+
+
