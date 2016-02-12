@@ -6,6 +6,19 @@ from time import strftime
 from datetime import datetime
 
 def main():
+<<<<<<< HEAD
+=======
+
+	gen = generation()
+
+	print gen.tournament()
+
+	# ww = world.world()
+	# for x in xrange(0,10):
+	# 	nextGen()
+	# 	#print tabGen[x].tournament()
+	# 	raw_input()
+>>>>>>> 6f816c6c70b8f51a5509579bd338ecc432715d63
 	
 	t01 = datetime.now()
 	t1 = t01.strftime("%H:%M:%S.%f")
