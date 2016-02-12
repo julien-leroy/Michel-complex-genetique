@@ -30,8 +30,8 @@ class generation:
         
         def fight():
 
-            rdn = randint(0, len(self.tabIndividus))
-            rdn2 = randint(0, len(self.tabIndividus))
+            rdn = randint(0, len(self.tabIndividus)-1)
+            rdn2 = randint(0, len(self.tabIndividus)-1)
             
             indiv1 = self.tabIndividus[rdn]
             indiv2 = self.tabIndividus[rdn2]
@@ -50,14 +50,14 @@ class generation:
                     # print(theChosen)
                     if(theChosen >= RWSIndex):
                         theChosenTableau = RWSTabs[j]
-                        print("all tabs J")
-                        print RWSTabs[j]
+                        #print("all tabs J")
+                        #print RWSTabs[j]
                         break
                 else:
                     continue
                 break
 
-            return theChosen
+            return theChosenTableau
 
 
         leRetourDesTableau.append(fight())
@@ -73,12 +73,6 @@ class generation:
         return num
 
     def RWS(self):
-        # print sum(self.printPedro())
-        # num = 0
-        # tab = self.tabIndividus
-        # for k in range(0, len(tab)):
-        #     print tab[k].getFitness()
-        #     num += tab[k].getFitness()
         allTabs = self.printGen()
         
         num = self.getAllFitness()
@@ -120,11 +114,11 @@ class generation:
         #print tab3
         engeance = []
         i=0
-        while i < 5:
+        while i < len(tab2[0]):
             end = len(tab3)-1
             indx = randint(0,end)
             mutationPossible = randint(0,100)
-            if mutationPossible > 10:
+            if mutationPossible > 3:
                 engeance.append(tab3[indx])
             else:
                 mutation = randint(0,10)

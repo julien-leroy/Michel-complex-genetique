@@ -4,8 +4,10 @@ from randm import randm
 
 class world:
 
-    nbGenerations =1000 #doit etre pair
-    #nbIndividuals = 20
+    azeret = raw_input('Number of generations ?  ')
+    nbGenerations =int(azeret) #doit etre pair
+    RWSusage = raw_input('RWS (1) or Tournament (else) ?  ')
+    
     genInit = generation()
 
     def __init__(self):
@@ -14,24 +16,35 @@ class world:
 
     def initWorld(self):
         n=0
+        allFitness = []
+        allFitnessAverage = 0
         while n < len(self.genInit.tabIndividus):
             print(self.genInit.tabIndividus[n].getGenes())
             n+=1
         for y in range(0,self.nbGenerations):
-            print("gen numero : " + str(y))
             tab = []
+            allFitness.append(self.genInit.getAllFitness())
+            allFitnessAverage += self.genInit.getAllFitness()
+            if(y>1):
+                print("gen numero : " + str(y) + "  Variance: " + str(allFitness[1] - allFitness[2]))
+            if(y > 2):
+                del allFitness[0]
             i=0
+            #print ("allFitness: " +str(allFitness))
             while i < len(self.genInit.tabIndividus)/2:
                 #print len(self.genInit.tabIndividus)
-                etape1 = self.genInit.RWS()
+                if(self.RWSusage == "1"):
+                    etape1 = self.genInit.RWS()
+                else:
+                    etape1 = self.genInit.tournament()
                 etape2 = self.genInit.copulation(etape1)
                 tab.append(etape2[0])
                 tab.append(etape2[1])
-                print(str(tab[i].getGenes()))
+                print(str(tab[i].getGenes()) + " Fitness: " + str(tab[i].getFitness()))
                 i+=1
             self.genInit.setTableauIndividus(tab);
 
-
+        print("Avergage fitness: " + str(allFitnessAverage/(y+1)/len(self.genInit.tabIndividus)))
 
     def nextGen():
         print("gen numero : " + str(len(tabGen) + 1))

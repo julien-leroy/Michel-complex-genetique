@@ -1,6 +1,10 @@
 from randm import *
 
+
 class individu:
+
+	nbGenes = raw_input("Number of genes of each individual:  ")
+	nbGenesInt = int(nbGenes)
 
 	def __init__(self):
 		self.tabGenes = []
@@ -22,7 +26,7 @@ class individu:
 
 	def rnmdz(self):
 		liste = []
-		for walrandDegorge in range(0,5):
+		for walrandDegorge in range(0,self.nbGenesInt):
 			liste.append(randint(0,10))
 		# print liste
 		return liste
