@@ -1,3 +1,0 @@
-# Michel-complex-genetique
-
-### Michel saura résoudre vos problemes génétiques en un rien de temps...
