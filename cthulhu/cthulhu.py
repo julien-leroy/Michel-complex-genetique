@@ -35,42 +35,49 @@ class Cthulhu:
 		self.name = ""
 		self.nameGenerator()
 
-		self.Apparence = randint(1,10)
-		self.Constitution = randint(1,10)
-		self.Dexterite = randint(1,10)
-		self.Force = randint(1,10)
-		self.Taille = randint(1,10)
-		self.Education = randint(1,10)
-		self.Intelligence = randint(1,10)
-		self.Pouvoir = randint(1,10)
+		self.apparence = randint(1,10)
+		self.constitution = randint(1,10)
+		self.dexterite = randint(1,10)
+		self.force = randint(1,10)
+		self.taille = randint(1,10)
+		self.education = randint(1,10)
+		self.intelligence = randint(1,10)
+		self.pouvoir = randint(1,10)
 
-		self.X = self.forceAttraction()
-		self.Y = self.scoreCombat()
-		self.Z = self.planDominationMondiale()
-		self.O = self.degatReveil()
+		self.X = 0
+		self.Y = 0
+		self.Z = 0
+		self.O = 0
 
+		self.calculateForces()
 
-		self.tabGenes = [self.Apparence,self.Constitution,self.Dexterite,self.Force,self.Taille,self.Education,self.Intelligence,self.Pouvoir]
+		self.tabGenes = [self.apparence,self.constitution,self.dexterite,self.force,self.taille,self.education,self.intelligence,self.pouvoir]
 		self.tabXYZOmega = [self.X,self.Y,self.Z,self.O]
 		self.score    = sum(self.tabXYZOmega)
 		
 		self.fitness()
 		return self
 
+	def calculateForces(self):
+		self.X = self.forceAttraction()
+		self.Y = self.scoreCombat()
+		self.Z = self.planDominationMondiale()
+		self.O = self.degatReveil()
+
 	def forceAttraction(self):
-		X = (math.pow(self.Intelligence,2))*(math.exp(self.Apparence*self.Pouvoir))*self.Education
+		X = (math.pow(self.intelligence,2))*(math.exp(self.apparence*self.pouvoir))*self.education
 		return X
 
 	def scoreCombat(self):
-		Y = (self.Dexterite/self.Taille)*math.pow(self.Force,self.Constitution/29.53)*math.sqrt(self.Pouvoir)
+		Y = (self.dexterite/self.taille)*math.pow(self.force,self.constitution/29.53)*math.sqrt(self.pouvoir)
 		return Y
 
 	def planDominationMondiale(self):
-		Z = (self.Pouvoir*math.pow(self.Intelligence,2))/3
+		Z = (self.pouvoir*math.pow(self.intelligence,2))/3
 		return Z
 
 	def degatReveil(self):
-		O = math.pow(self.Pouvoir,2)*math.pow(self.Force,math.sqrt(self.Taille))
+		O = math.pow(self.pouvoir,2)*math.pow(self.force,math.sqrt(self.taille))
 		return O
 
 
@@ -79,7 +86,15 @@ class Cthulhu:
 		return self
 
 	def setGenes(self, newGen):
-		self.tabGenes = newGen
+		self.apparence = newGen[0]
+		self.constitution = newGen[1]
+		self.dexterite = newGen[2]
+		self.force = newGen[3]
+		self.taille = newGen[4]
+		self.education = newGen[5]
+		self.intelligence = newGen[6]
+		self.pouvoir = newGen[7]
+		self.calculateForces()
 		self.fitness()
 
 	def rnmdz(self):
