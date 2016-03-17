@@ -17,6 +17,7 @@ class Generation:
         for z in range(0,len(self.tabIndividus)):
             perso = self.tabIndividus[z]
             persos = perso.getGenes()
+            print perso.getName()
             tab2.append(persos)
         print tab2
         return tab2
@@ -55,6 +56,52 @@ class Generation:
             break
         leRetourDesTableau.append(theChosenTableau)
         leRetourDesTableau.append(theSecondChosenTableau)
+        return leRetourDesTableau
+
+
+    def tournament(self):
+
+        leRetourDesTableau = []
+        
+        def fight():
+
+            rdn = randint(0, len(self.tabIndividus)-1)
+            rdn2 = randint(0, len(self.tabIndividus)-1)
+            
+            indiv1 = self.tabIndividus[rdn]
+            indiv2 = self.tabIndividus[rdn2]
+
+            RWSTabs = [indiv1.getFitness(), indiv2.getFitness()]
+            RWSFitness = indiv1.getFitness() + indiv2.getFitness()
+            RWSIndex = randint(0, RWSFitness)
+            theChosen = 0
+
+            print "RWSTabs" + str(RWSTabs)
+            print "RWSFitness" + str(RWSFitness)
+            print "RWSIndex" + str(RWSIndex)
+
+            for j in range(0, len(RWSTabs)):
+                for k in range (0, RWSTabs[j]):
+                    theChosen+=RWSTabs[j]
+                    # print("alltabsJK loop= ")
+                    # print(allTabs[j][k])
+                    # print("theChosen")
+                    # print(theChosen)
+                    if(theChosen >= RWSIndex):
+                        theChosenTableau = RWSTabs[j]
+                        #print("all tabs J")
+                        #print RWSTabs[j]
+                        break
+                else:
+                    continue
+                break
+
+            return theChosenTableau
+
+
+        leRetourDesTableau.append(fight())
+        leRetourDesTableau.append(fight())
+        print leRetourDesTableau
         return leRetourDesTableau
 
 

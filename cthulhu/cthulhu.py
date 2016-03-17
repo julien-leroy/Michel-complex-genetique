@@ -1,11 +1,32 @@
 import math
 from random import *
 
+nameDictionary = [
+    'are',
+    'di',
+    'mo',
+    'fa',
+    'dar',
+    'kil',
+    'glar',
+    'tres',
+    'fool',
+    'por',
+    'fuk',
+    'nor',
+    'rik',
+    'toss',
+    'mi'
+]
+
 class Cthulhu:
 	def __init__(self):
 		self.initGenes()
 
 	def initGenes(self):
+		self.name = ""
+		self.nameGenerator()
+
 		self.Apparence = randint(1,10)
 		self.Constitution = randint(1,10)
 		self.Dexterite = randint(1,10)
@@ -68,3 +89,12 @@ class Cthulhu:
 
 	def getFitness(self):
 		return self.score
+
+	def getName(self):
+		return self.name
+
+	def nameGenerator(self):
+		first_part = nameDictionary[randint(0,len(nameDictionary)-1)]
+		second_part = nameDictionary[randint(0,len(nameDictionary)-1)]
+
+		self.name = first_part + second_part

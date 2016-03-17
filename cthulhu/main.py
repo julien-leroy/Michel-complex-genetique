@@ -6,5 +6,6 @@ def main():
 
 	GG.printGen()
 
+
 if __name__ == "__main__":
     main()
