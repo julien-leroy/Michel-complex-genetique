@@ -23,7 +23,7 @@ class Cthulhu:
 
 		self.tabGenes = [self.Apparence,self.Constitution,self.Dexterite,self.Force,self.Taille,self.Education,self.Intelligence,self.Pouvoir]
 		self.tabXYZOmega = [self.X,self.Y,self.Z,self.O]
-		self.score    = sum(self.tabGenes)
+		self.score    = sum(self.tabXYZOmega)
 		
 		self.fitness()
 		return self
