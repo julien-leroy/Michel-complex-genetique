@@ -16,7 +16,15 @@ nameDictionary = [
     'nor',
     'rik',
     'toss',
-    'mi'
+    'mi',
+    'zor',
+    'kor',
+    'ror',
+    'toz',
+    'root',
+    'frooz',
+    'cthu',
+    'lu'
 ]
 
 class Cthulhu:

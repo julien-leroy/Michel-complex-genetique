@@ -16,7 +16,7 @@ class Generation:
     	tab2 = []
         for z in range(0,len(self.tabIndividus)):
             perso = self.tabIndividus[z]
-            print str(perso.getName()) + " : " + str(perso.getGenes())
+            print "name : " + str(perso.getName()) + " | fitness : " + str(perso.getFitness()) + " | genes : " + str(perso.getGenes())
 
     def RWS(self):
         allTabs = self.printGen()
