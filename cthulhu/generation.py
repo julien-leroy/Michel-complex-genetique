@@ -16,11 +16,7 @@ class Generation:
     	tab2 = []
         for z in range(0,len(self.tabIndividus)):
             perso = self.tabIndividus[z]
-            persos = perso.getGenes()
-            print perso.getName()
-            tab2.append(persos)
-        print tab2
-        return tab2
+            print str(perso.getName()) + " : " + str(perso.getGenes())
 
     def RWS(self):
         allTabs = self.printGen()
@@ -71,38 +67,43 @@ class Generation:
             indiv1 = self.tabIndividus[rdn]
             indiv2 = self.tabIndividus[rdn2]
 
-            RWSTabs = [indiv1.getFitness(), indiv2.getFitness()]
-            RWSFitness = indiv1.getFitness() + indiv2.getFitness()
-            RWSIndex = randint(0, RWSFitness)
-            theChosen = 0
+            if indiv1.getFitness() >= indiv2.getFitness():
+                return indiv1
+            else:
+                return indiv2
 
-            print "RWSTabs" + str(RWSTabs)
-            print "RWSFitness" + str(RWSFitness)
-            print "RWSIndex" + str(RWSIndex)
+            # RWSTabs = [indiv1.getFitness(), indiv2.getFitness()]
+            # RWSFitness = indiv1.getFitness() + indiv2.getFitness()
+            # RWSIndex = randint(0, RWSFitness)
+            # theChosen = 0
 
-            for j in range(0, len(RWSTabs)):
-                for k in range (0, RWSTabs[j]):
-                    theChosen+=RWSTabs[j]
-                    # print("alltabsJK loop= ")
-                    # print(allTabs[j][k])
-                    # print("theChosen")
-                    # print(theChosen)
-                    if(theChosen >= RWSIndex):
-                        theChosenTableau = RWSTabs[j]
-                        #print("all tabs J")
-                        #print RWSTabs[j]
-                        break
-                else:
-                    continue
-                break
+            # print "RWSTabs" + str(RWSTabs)
+            # print "RWSFitness" + str(RWSFitness)
+            # print "RWSIndex" + str(RWSIndex)
 
-            return theChosenTableau
+            # for j in range(0, len(RWSTabs)):
+            #     for k in range (0, RWSTabs[j]):
+            #         theChosen+=RWSTabs[j]
+            #         # print("alltabsJK loop= ")
+            #         # print(allTabs[j][k])
+            #         # print("theChosen")
+            #         # print(theChosen)
+            #         if(theChosen >= RWSIndex):
+            #             theChosenCreature = RWSTabs[j]
+            #             #print("all tabs J")
+            #             #print RWSTabs[j]
+            #             break
+            #     else:
+            #         continue
+            #     break
+
+            # return theChosenCreature
 
 
-        leRetourDesTableau.append(fight())
-        leRetourDesTableau.append(fight())
-        print leRetourDesTableau
-        return leRetourDesTableau
+        leTableauContenantLePereEtLaMere.append(fight())
+        leTableauContenantLePereEtLaMere.append(fight())
+        print leTableauContenantLePereEtLaMere
+        return leTableauContenantLePereEtLaMere
 
 
     def copulation(tab1, tab2):
