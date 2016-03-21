@@ -16,10 +16,7 @@ class Generation:
     	tab2 = []
         for z in range(0,len(self.tabIndividus)):
             perso = self.tabIndividus[z]
-            persos = perso.getGenes()
-            tab2.append(persos)
-        print tab2
-        return tab2
+            print "name : " + str(perso.getName()) + " | fitness : " + str(perso.getFitness()) + " | genes : " + str(perso.getGenes())
 
     def RWS(self):
         allTabs = self.printGen()
@@ -58,6 +55,7 @@ class Generation:
         return leRetourDesTableau
 
 
+
     def copulation(cthulhu1, cthulhu2):
         genesC1 = cthulhu1.getGenes()
         genesC2 = cthulhu2.getGenes()
@@ -65,6 +63,7 @@ class Generation:
         genesC3 = []
         genesC4 = []
         i=0
+        # ne pas oublier d'inclure la mutation
         while i < maxtab
             rand = randint(0,1)
             if rand==0:
@@ -76,6 +75,56 @@ class Generation:
             i+=1
 
 
+
+    def tournament(self):
+
+        leRetourDesTableau = []
+        
+        def fight():
+
+            rdn = randint(0, len(self.tabIndividus)-1)
+            rdn2 = randint(0, len(self.tabIndividus)-1)
+            
+            indiv1 = self.tabIndividus[rdn]
+            indiv2 = self.tabIndividus[rdn2]
+
+            if indiv1.getFitness() >= indiv2.getFitness():
+                return indiv1
+            else:
+                return indiv2
+
+            # RWSTabs = [indiv1.getFitness(), indiv2.getFitness()]
+            # RWSFitness = indiv1.getFitness() + indiv2.getFitness()
+            # RWSIndex = randint(0, RWSFitness)
+            # theChosen = 0
+
+            # print "RWSTabs" + str(RWSTabs)
+            # print "RWSFitness" + str(RWSFitness)
+            # print "RWSIndex" + str(RWSIndex)
+
+            # for j in range(0, len(RWSTabs)):
+            #     for k in range (0, RWSTabs[j]):
+            #         theChosen+=RWSTabs[j]
+            #         # print("alltabsJK loop= ")
+            #         # print(allTabs[j][k])
+            #         # print("theChosen")
+            #         # print(theChosen)
+            #         if(theChosen >= RWSIndex):
+            #             theChosenCreature = RWSTabs[j]
+            #             #print("all tabs J")
+            #             #print RWSTabs[j]
+            #             break
+            #     else:
+            #         continue
+            #     break
+
+            # return theChosenCreature
+
+
+        leTableauContenantLePereEtLaMere.append(fight())
+        leTableauContenantLePereEtLaMere.append(fight())
+        print leTableauContenantLePereEtLaMere
+        return leTableauContenantLePereEtLaMere
 
 
         #print mitosis
