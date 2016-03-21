@@ -56,23 +56,29 @@ class Generation:
 
 
 
-    def copulation(cthulhu1, cthulhu2):
+    def copulation(self, cthulhu1, cthulhu2):
         genesC1 = cthulhu1.getGenes()
         genesC2 = cthulhu2.getGenes()
         maxtab = len(genesC1)-1
         genesC3 = []
         genesC4 = []
         i=0
-        # ne pas oublier d'inclure la mutation
-        while i < maxtab
-            rand = randint(0,1)
-            if rand==0:
+        while i<maxtab:
+            rand = randint(0,100)
+            if rand<47:
                 genesC3.append(genesC1[i])
                 genesC4.append(genesC2[i])
-            else:
+            elif rand>=47 and rand<=97:
                 genesC3.append(genesC2[i])
                 genesC4.append(genesC1[i])
+            else:
+                #mutation 3%
+                genesC3.append(randint(1,10))
+                genesC4.append(randint(1,10))
             i+=1
+        tableauDes2bebes = [genesC3, genesC4]
+        print tableauDes2bebes
+        return tableauDes2bebes
 
 
 
