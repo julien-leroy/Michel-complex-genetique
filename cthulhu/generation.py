@@ -58,24 +58,42 @@ class Generation:
         return leRetourDesTableau
 
 
-    def copulation(tab1, tab2):
-        tab3 = tab2[0] + tab2[1]
-        #print tab3
-        engeance = []
+    def copulation(cthulhu1, cthulhu2):
+        genesC1 = cthulhu1.getGenes()
+        genesC2 = cthulhu2.getGenes()
+        maxtab = len(genesC1)-1
+        genesC3 = []
+        genesC4 = []
         i=0
-        while i < len(tab2[0]):
-            end = len(tab3)-1
-            indx = randint(0,end)
-            mutationPossible = randint(0,100)
-            if mutationPossible > 3:
-                engeance.append(tab3[indx])
+        while i < maxtab
+            rand = randint(0,1)
+            if rand==0:
+                genesC3.append(genesC1[i])
+                genesC4.append(genesC2[i])
             else:
-                mutation = randint(0,10)
-                engeance.append(mutation)
-            del tab3[indx]
+                genesC3.append(genesC2[i])
+                genesC4.append(genesC1[i])
             i+=1
-        ind1 = individu()
-        ind1.setGenes(engeance)
-        ind2 = individu()
-        ind2.setGenes(tab3)
-        return [ind1,ind2]
+
+
+
+
+        #print mitosis
+        # engeance = []
+        # i=0
+        # while i < len(tab2[0]):
+        #     end = len(mitosis)-1
+        #     indx = randint(0,end)
+        #     mutationPossible = randint(0,100)
+        #     if mutationPossible > 3:
+        #         engeance.append(mitosis[indx])
+        #     else:
+        #         mutation = randint(0,10)
+        #         engeance.append(mutation)
+        #     del mitosis[indx]
+        #     i+=1
+        # ind1 = individu()
+        # ind1.setGenes(engeance)
+        # ind2 = individu()
+        # ind2.setGenes(mitosis)
+        # return [ind1,ind2]
