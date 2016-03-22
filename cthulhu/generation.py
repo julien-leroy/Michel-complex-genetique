@@ -18,8 +18,18 @@ class Generation:
             perso = self.tabIndividus[z]
             print "name : " + str(perso.getName()) + " | fitness : " + str(perso.getFitness()) + " | genes : " + str(perso.getGenes())
 
+    def getGen(self):
+        tab2 = []
+        for z in range(0,len(self.tabIndividus)):
+            perso = self.tabIndividus[z]
+            persos = perso.getGenes()
+            print perso.getName()
+            tab2.append(persos)
+        print tab2
+        return tab2
+
     def RWS(self):
-        allTabs = self.printGen()
+        allTabs = self.getGen()
         
         num = self.getAllFitness()
         index1 = randint(0, num)
