@@ -59,7 +59,9 @@ class Generation:
     def copulation(self, cthulhu1, cthulhu2):
         genesC1 = cthulhu1.getGenes()
         genesC2 = cthulhu2.getGenes()
-        maxtab = len(genesC1)-1
+        print genesC1
+        print genesC2
+        maxtab = len(genesC1)
         genesC3 = []
         genesC4 = []
         i=0

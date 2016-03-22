@@ -116,6 +116,9 @@ class Cthulhu:
 	def getName(self):
 		return self.name
 
+	def printCthulhu(self):
+		print "name : " + str(self.getName()) + " | fitness : " + str(self.getFitness()) + " | genes : " + str(self.getGenes())
+
 	def nameGenerator(self):
 		first_part = nameDictionary[randint(0,len(nameDictionary)-1)]
 		second_part = nameDictionary[randint(0,len(nameDictionary)-1)]
