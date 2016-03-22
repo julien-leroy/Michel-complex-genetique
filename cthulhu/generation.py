@@ -23,9 +23,7 @@ class Generation:
         for z in range(0,len(self.tabIndividus)):
             perso = self.tabIndividus[z]
             persos = perso.getGenes()
-            print perso.getName()
             tab2.append(persos)
-        print tab2
         return tab2
 
     def RWS(self):
