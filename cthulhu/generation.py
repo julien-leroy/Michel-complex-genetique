@@ -1,5 +1,6 @@
 from random import *
 from cthulhu import *
+import math
 
 
 class Generation:
@@ -19,17 +20,35 @@ class Generation:
             print "name : " + str(perso.getName()) + " | fitness : " + str(perso.getFitness()) + " | genes : " + str(perso.getGenes())
 
     def getGen(self):
-        tab2 = []
+        allGenes = []
         for z in range(0,len(self.tabIndividus)):
             perso = self.tabIndividus[z]
             persos = perso.getGenes()
-            tab2.append(persos)
-        return tab2
+            allGenes.append(persos)
+        return allGenes
+
+    def getAllFitness(self):
+        num = 0
+        tab = self.tabIndividus
+        for k in range(0, len(tab)):
+            num += tab[k].getFitness()
+        return num
+
+    def getAllScoresTable(self):
+        allScores = []
+        for t in range(0, len(self.tabIndividus)):
+            allScores.append(self.tabIndividus[t].getFitness())
+        return allScores
+
 
     def RWS(self):
-        allTabs = self.getGen()
-        
+        allTabs = self.getGen() # recuperation de tous les genes de la generation
+        #print "allTabs: " + str(allTabs)
         num = self.getAllFitness()
+        #print "num: " + str(num)
+        ScoresTable = self.getAllScoresTable()
+        num = math.floor(num)
+        #print "num floored: " + str(num)
         index1 = randint(0, num)
         index2 = randint(0, num)
 
@@ -40,54 +59,77 @@ class Generation:
         theSecondChosenTableau = []
         leRetourDesTableau = []
 
-        for j in range(0, len(allTabs)):
-            for k in range (0, len(allTabs[j])):
-                theChosenOne+=allTabs[j][k]
-                if(theChosenOne >= index1):
-                    theChosenTableau = allTabs[j]
-                    break
+        # for j in range(0, len(allTabs)):
+        #     for k in range (0, len(allTabs[j])):
+        #         theChosenOne+=allTabs[j][k]
+        #         if(theChosenOne >= index1):
+        #             theChosenTableau = allTabs[j]
+        #             break
+        #     else:
+        #         continue
+        #     break
+
+        for j in range(0, len(ScoresTable)):
+            theChosenOne+=ScoresTable[j]
+            if(theChosenOne>=index1):
+                theChosenTableau=allTabs[j]
+                break
             else:
                 continue
             break
-        for l in range(0, len(allTabs)):
-            for m in range (0, len(allTabs[l])):
-                theSecondChosenOne+=allTabs[l][m]
-                if(theSecondChosenOne >= index2):
-                    theSecondChosenTableau = allTabs[l]
-                    break
+
+        for l in range(0, len(ScoresTable)):
+            theSecondChosenOne+=ScoresTable[l]
+            if(theSecondChosenOne>=index2):
+                theSecondChosenTableau=allTabs[l]
+                break
             else:
                 continue
             break
+
+        # for l in range(0, len(allTabs)):
+        #     for m in range (0, len(allTabs[l])):
+        #         theSecondChosenOne+=allTabs[l][m]
+        #         if(theSecondChosenOne >= index2):
+        #             theSecondChosenTableau = allTabs[l]
+        #             break
+        #     else:
+        #         continue
+        #     break
+
+
+
         leRetourDesTableau.append(theChosenTableau)
         leRetourDesTableau.append(theSecondChosenTableau)
+        #print "leRetourDesTableau" + str(leRetourDesTableau)
         return leRetourDesTableau
 
 
 
     def copulation(self, cthulhu1, cthulhu2):
-        genesC1 = cthulhu1.getGenes()
-        genesC2 = cthulhu2.getGenes()
-        print genesC1
-        print genesC2
-        maxtab = len(genesC1)
+        # cthulhu1 = cthulhu1.getGenes()
+        # cthulhu2 = cthulhu2.getGenes()
+        #print cthulhu1
+        #print cthulhu2
+        maxtab = len(cthulhu1)
         genesC3 = []
         genesC4 = []
         i=0
         while i<maxtab:
             rand = randint(0,100)
             if rand<47:
-                genesC3.append(genesC1[i])
-                genesC4.append(genesC2[i])
+                genesC3.append(cthulhu1[i])
+                genesC4.append(cthulhu2[i])
             elif rand>=47 and rand<=97:
-                genesC3.append(genesC2[i])
-                genesC4.append(genesC1[i])
+                genesC3.append(cthulhu2[i])
+                genesC4.append(cthulhu1[i])
             else:
                 #mutation 3%
                 genesC3.append(randint(1,10))
                 genesC4.append(randint(1,10))
             i+=1
         tableauDes2bebes = [genesC3, genesC4]
-        print tableauDes2bebes
+        #print "tableauDes2bebes" + str(tableauDes2bebes)
         return tableauDes2bebes
 
 
