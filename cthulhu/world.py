@@ -27,8 +27,10 @@ class World:
                 etape2 = self.genInit.copulation(etape1[0],etape1[1])	
                 CC1.setGenes(etape1[0])
                 CC2.setGenes(etape1[1])
-                score1 = CC1.getFitness()
-                score2 = CC2.getFitness()
+                score1 = CC1.fitness()
+                score2 = CC2.fitness()
+                score1 = score1.score
+                score2 = score2.score
                 print str(etape2[0]) + "score: " + str(score1)
                 print str(etape2[1]) + "score: " + str(score2)
                 i+=1
