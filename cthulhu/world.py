@@ -13,6 +13,8 @@ class World:
         self.initWorld()
 
     def initWorld(self):
+        CC1 = Cthulhu()
+        CC2 = Cthulhu()
         for y in range(0,self.nbGenerations):
             print "GENRATION NUM." + str(y)
             i=0
@@ -22,10 +24,11 @@ class World:
                 etape1 = self.genInit.RWS()
                 #print "etape1: " + str(etape1)
                 #print "etape1" + str(etape1)
-                etape2 = self.genInit.copulation(etape1[0],etape1[1])
-                #tab.append(etape2[0])
-                #tab.append(etape2[1])	
-                tab.append(etape2[0])
-                tab.append(etape2[1])
-                print "TAB TAB TAB" + str(tab)
+                etape2 = self.genInit.copulation(etape1[0],etape1[1])	
+                CC1.setGenes(etape1[0])
+                CC2.setGenes(etape1[1])
+                score1 = CC1.getFitness()
+                score2 = CC2.getFitness()
+                print str(etape2[0]) + "score: " + str(score1)
+                print str(etape2[1]) + "score: " + str(score2)
                 i+=1
