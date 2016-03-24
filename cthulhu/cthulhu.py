@@ -84,9 +84,13 @@ class Cthulhu:
 	def fitness(self):
 		#self.score = sum(self.tabGenes)
 		scoreFA = 	(self.X/(1000*math.exp(100)))*100
-		scoreC = 	(self.Y/6.89666)*100
+		
+		scoreC = 	(self.Y/68.9665771964)*100
+		
 		scorePDM = 	(self.Z/(1000/3))*100
+		
 		scoreDR =	(self.O/145304.0301899042756154396695723461665813451520972058264661)*100
+		#print "scoreFA=" + str(scoreFA) + "scoreDR="+ str(scoreDR) + "scoreC="+ str(scoreC) + "scorePDM=" +str(scorePDM)
 
 		self.score = scoreFA+scoreC+scorePDM+scoreDR
 		return self

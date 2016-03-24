@@ -25,12 +25,14 @@ class World:
                 #print "etape1: " + str(etape1)
                 #print "etape1" + str(etape1)
                 etape2 = self.genInit.copulation(etape1[0],etape1[1])	
-                CC1.setGenes(etape1[0])
-                CC2.setGenes(etape1[1])
+                CC1.setGenes(etape2[0])
+                CC2.setGenes(etape2[1])
                 score1 = CC1.fitness()
                 score2 = CC2.fitness()
                 score1 = score1.score
                 score2 = score2.score
-                print str(etape2[0]) + "score: " + str(score1)
-                print str(etape2[1]) + "score: " + str(score2)
+                if(score1 > 400 or score2 > 400):
+                    raise SystemExit()
+                print "GENRATION NUM." + str(y) +"   " + str(etape2[0]) + "score: " + str(score1)
+                print "GENRATION NUM." + str(y) +"   " + str(etape2[1]) + "score: " + str(score2)
                 i+=1
