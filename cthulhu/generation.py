@@ -15,9 +15,12 @@ class Generation:
 
     def printGen(self):
     	tab2 = []
+        scoreMoyen = 0
         for z in range(0,len(self.tabIndividus)):
             perso = self.tabIndividus[z]
-            print "name : " + str(perso.getName()) + " | fitness : " + str(perso.getFitness()) + " | genes : " + str(perso.getGenes())
+            scoreMoyen += perso.getFitness()
+            print "score : " + str(perso.getFitness()) + " | name : " + str(perso.getName()) + " | genes : " + str(perso.getGenes())
+        print "score moyen : " + str(scoreMoyen)
 
     def getGen(self):
         allGenes = []
@@ -26,6 +29,9 @@ class Generation:
             persos = perso.getGenes()
             allGenes.append(persos)
         return allGenes
+
+    def setIndividus(self, newIndividus):
+        self.tabIndividus = newIndividus
 
     def getAllFitness(self):
         num = 0
@@ -129,14 +135,23 @@ class Generation:
                 genesC4.append(randint(1,10))
             i+=1
         tableauDes2bebes = [genesC3, genesC4]
-        #print "tableauDes2bebes" + str(tableauDes2bebes)
         return tableauDes2bebes
 
+    def CreateNewGen(self):
+        newGen = []
 
+        i = 0
+        while i < len(self.tabIndividus)/2:
+
+            etape1 = self.tournament()
+            etape2 = self.copulation(etape1[0],etape1[1])
+
+            newGen.append(Cthulhu().setGenes(etape2[0]))
+            newGen.append(Cthulhu().setGenes(etape2[1]))
+
+        return newGen
 
     def tournament(self):
-
-        leRetourDesTableau = []
         
         def fight():
 
@@ -147,9 +162,9 @@ class Generation:
             indiv2 = self.tabIndividus[rdn2]
 
             if indiv1.getFitness() >= indiv2.getFitness():
-                return indiv1
+                return indiv1.getGenes()
             else:
-                return indiv2
+                return indiv2.getGenes()
 
             # RWSTabs = [indiv1.getFitness(), indiv2.getFitness()]
             # RWSFitness = indiv1.getFitness() + indiv2.getFitness()
@@ -178,10 +193,9 @@ class Generation:
 
             # return theChosenCreature
 
-
+        leTableauContenantLePereEtLaMere = []
         leTableauContenantLePereEtLaMere.append(fight())
         leTableauContenantLePereEtLaMere.append(fight())
-        print leTableauContenantLePereEtLaMere
         return leTableauContenantLePereEtLaMere
 
 
