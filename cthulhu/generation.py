@@ -135,11 +135,8 @@ class Generation:
 
 
     def tournament(self):
-
-        leRetourDesTableau = []
         
         def fight():
-
             rdn = randint(0, len(self.tabIndividus)-1)
             rdn2 = randint(0, len(self.tabIndividus)-1)
             
@@ -147,41 +144,13 @@ class Generation:
             indiv2 = self.tabIndividus[rdn2]
 
             if indiv1.getFitness() >= indiv2.getFitness():
-                return indiv1
+                return indiv1.getGenes()
             else:
-                return indiv2
+                return indiv2.getGenes()
 
-            # RWSTabs = [indiv1.getFitness(), indiv2.getFitness()]
-            # RWSFitness = indiv1.getFitness() + indiv2.getFitness()
-            # RWSIndex = randint(0, RWSFitness)
-            # theChosen = 0
-
-            # print "RWSTabs" + str(RWSTabs)
-            # print "RWSFitness" + str(RWSFitness)
-            # print "RWSIndex" + str(RWSIndex)
-
-            # for j in range(0, len(RWSTabs)):
-            #     for k in range (0, RWSTabs[j]):
-            #         theChosen+=RWSTabs[j]
-            #         # print("alltabsJK loop= ")
-            #         # print(allTabs[j][k])
-            #         # print("theChosen")
-            #         # print(theChosen)
-            #         if(theChosen >= RWSIndex):
-            #             theChosenCreature = RWSTabs[j]
-            #             #print("all tabs J")
-            #             #print RWSTabs[j]
-            #             break
-            #     else:
-            #         continue
-            #     break
-
-            # return theChosenCreature
-
-
+        leTableauContenantLePereEtLaMere = []
         leTableauContenantLePereEtLaMere.append(fight())
         leTableauContenantLePereEtLaMere.append(fight())
-        print leTableauContenantLePereEtLaMere
         return leTableauContenantLePereEtLaMere
 
 

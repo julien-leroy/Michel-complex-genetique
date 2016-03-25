@@ -37,3 +37,4 @@ class World:
                 print "GENRATION NUM." + str(y) +"   " + str(etape2[1]) + "score: " + str(score2)
                 i+=1
 
+        self.genInit.printIndicateurs()
