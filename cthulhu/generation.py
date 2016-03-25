@@ -32,6 +32,7 @@ class Generation:
 
     def setIndividus(self, newIndividus):
         self.tabIndividus = newIndividus
+        return self
 
     def getAllFitness(self):
         num = 0
@@ -143,11 +144,19 @@ class Generation:
         i = 0
         while i < len(self.tabIndividus)/2:
 
+            C1 = Cthulhu()
+            C2 = Cthulhu()
+
             etape1 = self.tournament()
             etape2 = self.copulation(etape1[0],etape1[1])
 
-            newGen.append(Cthulhu().setGenes(etape2[0]))
-            newGen.append(Cthulhu().setGenes(etape2[1]))
+            C1.setGenes(etape2[0])
+            C2.setGenes(etape2[1])
+
+            newGen.append(C1)
+            newGen.append(C2)
+
+            i += 1
 
         return newGen
 

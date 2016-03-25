@@ -14,11 +14,11 @@ class World:
         
         def nextGen():
             newgen = self.gen.CreateNewGen()
-
-            return Generation().setIndividus(newgen)
+            newNewgen = Generation().setIndividus(newgen)
+            return newNewgen
         
         for y in range(0,self.nbGenerations):
             print "GENRATION NUM." + str(y)
             self.gen.printGen()
-
+            print 
             self.gen = nextGen()
