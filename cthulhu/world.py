@@ -21,3 +21,5 @@ class World:
             print "GENRATION NUM." + str(y)
             self.gen.printGen()
             self.gen = nextGen()
+
+        self.gen.printIndicateurs()
