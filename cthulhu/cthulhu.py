@@ -104,7 +104,7 @@ class Cthulhu:
 		self.tabGenes = [self.apparence,self.constitution,self.dexterite,self.force,self.taille,self.education,self.intelligence,self.pouvoir]
 		self.calculateForces()
 		self.fitness()
-		print self.score
+		#print self.score
 
 	def rnmdz(self):
 		liste = []

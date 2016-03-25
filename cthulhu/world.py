@@ -28,4 +28,4 @@ class World:
 
         self.gen.printIndicateurs()
         print "Moyenne initiale   : ", self.firstMoyenne
-        print "Moyenne final      : ", self.gen.getMoyenne()
+        print "Moyenne finale     : ", self.gen.getMoyenne()

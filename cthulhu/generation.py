@@ -2,7 +2,6 @@ from random import *
 from cthulhu import *
 import math
 
-
 class Generation:
     def __init__(self):
     	self.tabIndividus = self.initGeneration()
@@ -18,7 +17,7 @@ class Generation:
         for z in range(0,len(self.tabIndividus)):
             perso = self.tabIndividus[z]
             print "score : " + str(perso.getFitness()) + " | name : " + str(perso.getName()) + " | genes : " + str(perso.getGenes())
-        print "score moyen : " + str(self.getMoyenne())
+        print "Score moyen : " + str(self.getMoyenne())
 
     def getMoyenne(self):
         scoreMoyen = 0
@@ -56,12 +55,9 @@ class Generation:
 
     def RWS(self):
         allTabs = self.getGen() # recuperation de tous les genes de la generation
-        #print "allTabs: " + str(allTabs)
         num = self.getAllFitness()
-        #print "num: " + str(num)
         ScoresTable = self.getAllScoresTable()
         num = math.floor(num)
-        #print "num floored: " + str(num)
         index1 = randint(0, num)
         index2 = randint(0, num)
 
@@ -71,16 +67,6 @@ class Generation:
         theChosenTableau = []
         theSecondChosenTableau = []
         leRetourDesTableau = []
-
-        # for j in range(0, len(allTabs)):
-        #     for k in range (0, len(allTabs[j])):
-        #         theChosenOne+=allTabs[j][k]
-        #         if(theChosenOne >= index1):
-        #             theChosenTableau = allTabs[j]
-        #             break
-        #     else:
-        #         continue
-        #     break
 
         for j in range(0, len(ScoresTable)):
             theChosenOne+=ScoresTable[j]
@@ -100,30 +86,14 @@ class Generation:
                 continue
             break
 
-        # for l in range(0, len(allTabs)):
-        #     for m in range (0, len(allTabs[l])):
-        #         theSecondChosenOne+=allTabs[l][m]
-        #         if(theSecondChosenOne >= index2):
-        #             theSecondChosenTableau = allTabs[l]
-        #             break
-        #     else:
-        #         continue
-        #     break
-
-
-
         leRetourDesTableau.append(theChosenTableau)
         leRetourDesTableau.append(theSecondChosenTableau)
-        #print "leRetourDesTableau" + str(leRetourDesTableau)
         return leRetourDesTableau
 
 
 
     def copulation(self, cthulhu1, cthulhu2):
-        # cthulhu1 = cthulhu1.getGenes()
-        # cthulhu2 = cthulhu2.getGenes()
-        #print cthulhu1
-        #print cthulhu2
+
         maxtab = len(cthulhu1)
         genesC3 = []
         genesC4 = []
@@ -153,7 +123,7 @@ class Generation:
             C1 = Cthulhu()
             C2 = Cthulhu()
 
-            etape1 = self.tournament()
+            etape1 = self.RWS()
             etape2 = self.copulation(etape1[0],etape1[1])
 
             C1.setGenes(etape2[0])
@@ -187,26 +157,6 @@ class Generation:
         return leTableauContenantLePereEtLaMere
 
 
-        #print mitosis
-        # engeance = []
-        # i=0
-        # while i < len(tab2[0]):
-        #     end = len(mitosis)-1
-        #     indx = randint(0,end)
-        #     mutationPossible = randint(0,100)
-        #     if mutationPossible > 3:
-        #         engeance.append(mitosis[indx])
-        #     else:
-        #         mutation = randint(0,10)
-        #         engeance.append(mutation)
-        #     del mitosis[indx]
-        #     i+=1
-        # ind1 = individu()
-        # ind1.setGenes(engeance)
-        # ind2 = individu()
-        # ind2.setGenes(mitosis)
-        # return [ind1,ind2]
-
     def bestScore(self):
         allScores = self.getAllScoresTable()
         bestScore = 0
@@ -217,15 +167,22 @@ class Generation:
 
         return bestScore
 
+    
     def printIndicateurs(self):
         allScores = self.getAllScoresTable()
-
-        moy = sum(list(allScores)) / len(allScores)
-        scoreCarre = [(indiv-moy)**2 for indiv in allScores]
-        variance = sum(list(scoreCarre)) / len(scoreCarre)
+        moy = sum(allScores) / len(allScores)
+        i=0
+        ret = 0
+        while (i<len(allScores)):
+            r=(allScores[i]-moy)**2
+            ret += r
+            i+=1
+        variance = ret*(len(allScores)**(-1))
         ecartType = variance**0.5
 
-        print("moyenne : %s" %(moy))
-        print("variance : %s" %(variance))
-        print("ecart-type : %s" %(ecartType))
-        print("meilleur score : %s" %(self.bestScore()))
+
+        print("Moyenne : %s" %(moy))
+        print("Variance : %s" %(variance))
+        print("Ecart-type : %s" %(ecartType))
+        print("Meilleur score : %s" %(self.bestScore()))
+
