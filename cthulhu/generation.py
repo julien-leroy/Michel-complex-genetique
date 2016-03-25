@@ -4,16 +4,19 @@ import math
 
 class Generation:
     def __init__(self, ioogyu):
+        #On initialise la generation 
     	self.tabIndividus = self.initGeneration()
         self.ioogyu = ioogyu
 
     def initGeneration(self):
         tab = []
+        #On crée une generation de 10 Cthulhus
         for y in range(0,10):
             tab.append(Cthulhu())
         return tab
 
     def printGen(self):
+        #Cette fonction permet l'affichage de chaque individu dans la console, accompagne de son score et de son nom
     	tab2 = []
         for z in range(0,len(self.tabIndividus)):
             perso = self.tabIndividus[z]
@@ -21,6 +24,7 @@ class Generation:
         print "Score moyen : " + str(self.getMoyenne())
 
     def getMoyenne(self):
+        #On récupère la moyenne du score de tous les individus de la génération
         scoreMoyen = 0
         for z in range(0,len(self.tabIndividus)):
             scoreMoyen += self.tabIndividus[z].getFitness()
@@ -29,6 +33,7 @@ class Generation:
 
 
     def getGen(self):
+        #Permet de récupérer tous les individus de la generation
         allGenes = []
         for z in range(0,len(self.tabIndividus)):
             perso = self.tabIndividus[z]
@@ -41,6 +46,7 @@ class Generation:
         return self
 
     def getAllFitness(self):
+        #Permet de récupérer la somme des scores de toute la generation
         num = 0
         tab = self.tabIndividus
         for k in range(0, len(tab)):
@@ -48,6 +54,7 @@ class Generation:
         return num
 
     def getAllScoresTable(self):
+        #Permet de récupérer le tableau des scores de la generation
         allScores = []
         for t in range(0, len(self.tabIndividus)):
             allScores.append(self.tabIndividus[t].getFitness())
@@ -55,7 +62,10 @@ class Generation:
 
 
     def RWS(self):
-        allTabs = self.getGen() # recuperation de tous les genes de la generation
+        #La technique RWS consiste a choisir aleatoirement dans une liste d’individus 
+        #dont le pourcentage de chance d’etre choisi depend de leur fitness. C’est la technique de la roue.
+
+        allTabs = self.getGen() 
         num = self.getAllFitness()
         ScoresTable = self.getAllScoresTable()
         num = math.floor(num)
@@ -94,21 +104,23 @@ class Generation:
 
 
     def copulation(self, cthulhu1, cthulhu2):
-
+        #la fonction qui va creer 2 enfant avec les 2 parents choisis grace a la methode de selection. 
+        #Ici, pour chaque gene il y aura 49% de chance d’avoir le gene de la mere,
+        # 49% d’avoir le gene du pere et 2% de chance de muter.
         maxtab = len(cthulhu1)
         genesC3 = []
         genesC4 = []
         i=0
         while i<maxtab:
             rand = randint(0,100)
-            if rand<47:
+            if rand<49:
                 genesC3.append(cthulhu1[i])
                 genesC4.append(cthulhu2[i])
-            elif rand>=47 and rand<=97:
+            elif rand>=49 and rand<=98:
                 genesC3.append(cthulhu2[i])
                 genesC4.append(cthulhu1[i])
             else:
-                #mutation 3%
+                #mutation 2%
                 genesC3.append(randint(1,10))
                 genesC4.append(randint(1,10))
             i+=1
@@ -122,7 +134,6 @@ class Generation:
             etape1 = self.RWS()
         else:
             etape1 = self.tournament()
-
 
         i = 0
         while i < len(self.tabIndividus)/2:
@@ -145,7 +156,8 @@ class Generation:
         return newGen
 
     def tournament(self):
-        
+        #La technique du tournament selectionne 2 individus pour confronter leur score et choisir le pere. 
+        #La meme selection est faite pour la mere.
         def fight():
 
             rdn = randint(0, len(self.tabIndividus)-1)
@@ -166,6 +178,7 @@ class Generation:
 
 
     def bestScore(self):
+        #On recupere tous les scores de la generation et on en retire le meilleur
         allScores = self.getAllScoresTable()
         bestScore = 0
 
@@ -177,6 +190,7 @@ class Generation:
 
     
     def printIndicateurs(self):
+        #On récupère les  statistiques de la generation
         allScores = self.getAllScoresTable()
         moy = sum(allScores) / len(allScores)
         i=0

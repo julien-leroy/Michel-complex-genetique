@@ -32,6 +32,7 @@ class Cthulhu:
 		self.initGenes()
 
 	def initGenes(self):
+		#On définit toutes les caractéristiques de base d'un petit Cthulhu
 		self.name = ""
 		self.nameGenerator()
 		self.score = 0
@@ -50,12 +51,12 @@ class Cthulhu:
 		self.Z = 0
 		self.O = 0
 
-		self.calculateForces()
+		self.calculateForces() # Appel de la fonction qui assigne ses competences en fonction de ses stats
 
 		self.tabGenes = [self.apparence,self.constitution,self.dexterite,self.force,self.taille,self.education,self.intelligence,self.pouvoir]
 		self.tabXYZOmega = [self.X,self.Y,self.Z,self.O]
 		
-		self.fitness()
+		self.fitness() # Appel de la fonction qui rationalise le score
 		return self
 
 	def calculateForces(self):
@@ -89,10 +90,11 @@ class Cthulhu:
 		scorePDM = 	(self.Z/(1000/3))*100
 		
 		scoreDR =	(self.O/145304.0301899042756154396695723461665813451520972058264661)*100
-
+		#ici on a rationalise le score afin de mettre chaque resulat sur un pied d'egalite pour pouvoir les comparer
 		self.score = scoreFA+scoreC+scorePDM+scoreDR
 
 	def setGenes(self, newGen):
+		#Cette fonction permet de remplacer les genes d'un Cthulhu par les genes passees dans le tableau newGen
 		self.apparence = newGen[0]
 		self.constitution = newGen[1]
 		self.dexterite = newGen[2]
@@ -105,13 +107,6 @@ class Cthulhu:
 		self.calculateForces()
 		self.fitness()
 
-
-	def rnmdz(self):
-		liste = []
-		for walrandDegorge in range(0,self.nbGenesInt):
-			liste.append(randint(0,10))
-		# print liste
-		return liste
 
 	def getGenes(self):
 		return self.tabGenes
