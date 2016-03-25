@@ -83,8 +83,11 @@ class Cthulhu:
 
 	def fitness(self):
 		scoreFA = 	(self.X/(1000*math.exp(100)))*100
-		scoreC = 	(self.Y/68.9666)*100
+		
+		scoreC = 	(self.Y/68.9665771964)*100
+		
 		scorePDM = 	(self.Z/(1000/3))*100
+		
 		scoreDR =	(self.O/145304.0301899042756154396695723461665813451520972058264661)*100
 
 		self.score = scoreFA+scoreC+scorePDM+scoreDR

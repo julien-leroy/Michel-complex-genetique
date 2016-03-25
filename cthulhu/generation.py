@@ -165,8 +165,8 @@ class Generation:
         
         def fight():
 
-            # rdn = randint(0, len(self.tabIndividus)-1)
-            # rdn2 = randint(0, len(self.tabIndividus)-1)
+            rdn = randint(0, len(self.tabIndividus)-1)
+            rdn2 = randint(0, len(self.tabIndividus)-1)
             
             indiv1 = self.tabIndividus[rdn]
             indiv2 = self.tabIndividus[rdn2]
@@ -175,33 +175,6 @@ class Generation:
                 return indiv1.getGenes()
             else:
                 return indiv2.getGenes()
-
-            # RWSTabs = [indiv1.getFitness(), indiv2.getFitness()]
-            # RWSFitness = indiv1.getFitness() + indiv2.getFitness()
-            # RWSIndex = randint(0, RWSFitness)
-            # theChosen = 0
-
-            # print "RWSTabs" + str(RWSTabs)
-            # print "RWSFitness" + str(RWSFitness)
-            # print "RWSIndex" + str(RWSIndex)
-
-            # for j in range(0, len(RWSTabs)):
-            #     for k in range (0, RWSTabs[j]):
-            #         theChosen+=RWSTabs[j]
-            #         # print("alltabsJK loop= ")
-            #         # print(allTabs[j][k])
-            #         # print("theChosen")
-            #         # print(theChosen)
-            #         if(theChosen >= RWSIndex):
-            #             theChosenCreature = RWSTabs[j]
-            #             #print("all tabs J")
-            #             #print RWSTabs[j]
-            #             break
-            #     else:
-            #         continue
-            #     break
-
-            # return theChosenCreature
 
         leTableauContenantLePereEtLaMere = []
         leTableauContenantLePereEtLaMere.append(fight())
@@ -228,3 +201,26 @@ class Generation:
         # ind2 = individu()
         # ind2.setGenes(mitosis)
         # return [ind1,ind2]
+
+    def bestScore(self):
+        allScores = self.getAllScoresTable()
+        bestScore = 0
+
+        for i in allScores:
+            if i > bestScore:
+                bestScore = i
+
+        return bestScore
+
+    def printIndicateurs(self):
+        allScores = self.getAllScoresTable()
+
+        moy = sum(list(allScores)) / len(allScores)
+        scoreCarre = [(indiv-moy)**2 for indiv in allScores]
+        variance = sum(list(scoreCarre)) / len(scoreCarre)
+        ecartType = variance**0.5
+
+        print("moyenne : %s" %(moy))
+        print("variance : %s" %(variance))
+        print("ecart-type : %s" %(ecartType))
+        print("meilleur score : %s" %(self.bestScore()))

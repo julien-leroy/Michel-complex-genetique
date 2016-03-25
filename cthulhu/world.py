@@ -20,5 +20,4 @@ class World:
         for y in range(0,self.nbGenerations):
             print "GENRATION NUM." + str(y)
             self.gen.printGen()
-            print 
             self.gen = nextGen()
