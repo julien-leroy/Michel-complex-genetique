@@ -32,7 +32,7 @@ class Cthulhu:
 		self.initGenes()
 
 	def initGenes(self):
-		#On définit toutes les caractéristiques de base d'un petit Cthulhu
+		#On definit toutes les caracteristiques de base d'un petit Cthulhu
 		self.name = ""
 		self.nameGenerator()
 		self.score = 0

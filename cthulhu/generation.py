@@ -10,7 +10,7 @@ class Generation:
 
     def initGeneration(self):
         tab = []
-        #On crée une generation de 10 Cthulhus
+        #On cree une generation de 10 Cthulhus
         for y in range(0,10):
             tab.append(Cthulhu())
         return tab
@@ -24,7 +24,7 @@ class Generation:
         print "Score moyen : " + str(self.getMoyenne())
 
     def getMoyenne(self):
-        #On récupère la moyenne du score de tous les individus de la génération
+        #On recupere la moyenne du score de tous les individus de la generation
         scoreMoyen = 0
         for z in range(0,len(self.tabIndividus)):
             scoreMoyen += self.tabIndividus[z].getFitness()
@@ -33,7 +33,7 @@ class Generation:
 
 
     def getGen(self):
-        #Permet de récupérer tous les individus de la generation
+        #Permet de recuperer tous les individus de la generation
         allGenes = []
         for z in range(0,len(self.tabIndividus)):
             perso = self.tabIndividus[z]
@@ -46,7 +46,7 @@ class Generation:
         return self
 
     def getAllFitness(self):
-        #Permet de récupérer la somme des scores de toute la generation
+        #Permet de recuperer la somme des scores de toute la generation
         num = 0
         tab = self.tabIndividus
         for k in range(0, len(tab)):
@@ -54,7 +54,7 @@ class Generation:
         return num
 
     def getAllScoresTable(self):
-        #Permet de récupérer le tableau des scores de la generation
+        #Permet de recuperer le tableau des scores de la generation
         allScores = []
         for t in range(0, len(self.tabIndividus)):
             allScores.append(self.tabIndividus[t].getFitness())
@@ -62,8 +62,8 @@ class Generation:
 
 
     def RWS(self):
-        #La technique RWS consiste a choisir aleatoirement dans une liste d’individus 
-        #dont le pourcentage de chance d’etre choisi depend de leur fitness. C’est la technique de la roue.
+        #La technique RWS consiste a choisir aleatoirement dans une liste d individus 
+        #dont le pourcentage de chance d etre choisi depend de leur fitness. C est la technique de la roue.
 
         allTabs = self.getGen() 
         num = self.getAllFitness()
@@ -105,8 +105,8 @@ class Generation:
 
     def copulation(self, cthulhu1, cthulhu2):
         #la fonction qui va creer 2 enfant avec les 2 parents choisis grace a la methode de selection. 
-        #Ici, pour chaque gene il y aura 49% de chance d’avoir le gene de la mere,
-        # 49% d’avoir le gene du pere et 2% de chance de muter.
+        #Ici pour chaque gene il y aura 49% de chance d avoir le gene de la mere,
+        # 49% d avoir le gene du pere et 2% de chance de muter.
         maxtab = len(cthulhu1)
         genesC3 = []
         genesC4 = []
@@ -190,7 +190,7 @@ class Generation:
 
     
     def printIndicateurs(self):
-        #On récupère les  statistiques de la generation
+        #On recupere les  statistiques de la generation
         allScores = self.getAllScoresTable()
         moy = sum(allScores) / len(allScores)
         i=0
