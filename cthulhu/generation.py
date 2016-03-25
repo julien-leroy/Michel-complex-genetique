@@ -4,8 +4,9 @@ import math
 
 
 class Generation:
-    def __init__(self):
+    def __init__(self, ioogyu):
     	self.tabIndividus = self.initGeneration()
+        self.ioogyu = ioogyu
 
     def initGeneration(self):
         tab = []
@@ -147,13 +148,18 @@ class Generation:
     def CreateNewGen(self):
         newGen = []
 
+        if self.ioogyu =="1":
+            etape1 = self.RWS()
+        else:
+            etape1 = self.tournament()
+
+
         i = 0
         while i < len(self.tabIndividus)/2:
 
             C1 = Cthulhu()
             C2 = Cthulhu()
 
-            etape1 = self.tournament()
             etape2 = self.copulation(etape1[0],etape1[1])
 
             C1.setGenes(etape2[0])

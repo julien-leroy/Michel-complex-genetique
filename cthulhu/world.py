@@ -4,8 +4,9 @@ from generation import *
 class World:
 
     azeret = raw_input('Number of generations ?  ')
+    ioogyu = raw_input('RWS tapez 1, tournament tapez 2 : ')
     nbGenerations =int(azeret) #doit etre pair
-    gen = Generation()
+    gen = Generation(ioogyu)
     firstMoyenne = gen.getMoyenne()
 
     def __init__(self):
@@ -15,7 +16,7 @@ class World:
         
         def nextGen():
             newgen = self.gen.CreateNewGen()
-            newNewgen = Generation().setIndividus(newgen)
+            newNewgen = Generation(self.ioogyu).setIndividus(newgen)
             return newNewgen
 
         print "GENRATION NUM. 0"
@@ -27,5 +28,6 @@ class World:
             self.gen.printGen()
 
         self.gen.printIndicateurs()
+        print "Vous avez choisie ", self.ioogyu , "en mode de selection"
         print "Moyenne initiale   : ", self.firstMoyenne
         print "Moyenne final      : ", self.gen.getMoyenne()
