@@ -15,13 +15,18 @@ class Generation:
 
     def printGen(self):
     	tab2 = []
-        scoreMoyen = 0
         for z in range(0,len(self.tabIndividus)):
             perso = self.tabIndividus[z]
-            scoreMoyen += perso.getFitness()
             print "score : " + str(perso.getFitness()) + " | name : " + str(perso.getName()) + " | genes : " + str(perso.getGenes())
+        print "score moyen : " + str(self.getMoyenne())
+
+    def getMoyenne(self):
+        scoreMoyen = 0
+        for z in range(0,len(self.tabIndividus)):
+            scoreMoyen += self.tabIndividus[z].getFitness()
         scoreMoyen = scoreMoyen / len(self.tabIndividus)
-        print "score moyen : " + str(scoreMoyen)
+        return scoreMoyen
+
 
     def getGen(self):
         allGenes = []

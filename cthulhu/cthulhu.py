@@ -101,6 +101,7 @@ class Cthulhu:
 		self.education = newGen[5]
 		self.intelligence = newGen[6]
 		self.pouvoir = newGen[7]
+		self.tabGenes = [self.apparence,self.constitution,self.dexterite,self.force,self.taille,self.education,self.intelligence,self.pouvoir]
 		self.calculateForces()
 		self.fitness()
 		print self.score
