@@ -174,24 +174,25 @@ class Generation:
         # ind2.setGenes(mitosis)
         # return [ind1,ind2]
 
-    def meilleurScore(self):
-        score = 0
-        for i in self.tabIndividus:
-            score = i.getScore()
-            if(score > score):
-                score = score
+    def bestScore(self):
+        allScores = self.getAllScoresTable()
+        bestScore = 0
 
-        return score
+        for i in allScores:
+            if i > bestScore:
+                bestScore = i
+
+        return bestScore
 
     def printIndicateurs(self):
-        allScores = getAllFitness()
+        allScores = self.getAllScoresTable()
 
         moy = sum(list(allScores)) / len(allScores)
-        indivScoreCarre = [(indiv-moy)**2 for indiv in allScores]
-        vari = sum(list(individuScoreCarre)) / len(individuScoreCarre)
-        ecart = vari**0.5
+        scoreCarre = [(indiv-moy)**2 for indiv in allScores]
+        variance = sum(list(scoreCarre)) / len(scoreCarre)
+        ecartType = variance**0.5
 
         print("moyenne : %s" %(moy))
-        print("variance : %s" %(vari))
-        print("ecart-type : %s" %(ecart))
-        print("meilleur score : %s" %(meilleurScore(self)))
+        print("variance : %s" %(variance))
+        print("ecart-type : %s" %(ecartType))
+        print("meilleur score : %s" %(self.bestScore()))
