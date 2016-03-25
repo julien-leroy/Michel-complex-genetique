@@ -20,6 +20,7 @@ class Generation:
             perso = self.tabIndividus[z]
             scoreMoyen += perso.getFitness()
             print "score : " + str(perso.getFitness()) + " | name : " + str(perso.getName()) + " | genes : " + str(perso.getGenes())
+        scoreMoyen = scoreMoyen / len(self.tabIndividus)
         print "score moyen : " + str(scoreMoyen)
 
     def getGen(self):
@@ -164,8 +165,8 @@ class Generation:
         
         def fight():
 
-            rdn = randint(0, len(self.tabIndividus)-1)
-            rdn2 = randint(0, len(self.tabIndividus)-1)
+            # rdn = randint(0, len(self.tabIndividus)-1)
+            # rdn2 = randint(0, len(self.tabIndividus)-1)
             
             indiv1 = self.tabIndividus[rdn]
             indiv2 = self.tabIndividus[rdn2]
