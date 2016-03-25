@@ -21,7 +21,7 @@ class World:
             while i < len(self.genInit.tabIndividus)/2:
                 tab = []
                 #tab.append(self.genInit.copulation(self.genInit.tabIndividus[0],self.genInit.tabIndividus[1]))
-                etape1 = self.genInit.RWS()
+                etape1 = self.genInit.tournament()
                 #print "etape1: " + str(etape1)
                 #print "etape1" + str(etape1)
                 etape2 = self.genInit.copulation(etape1[0],etape1[1])	
@@ -36,3 +36,4 @@ class World:
                 print "GENRATION NUM." + str(y) +"   " + str(etape2[0]) + "score: " + str(score1)
                 print "GENRATION NUM." + str(y) +"   " + str(etape2[1]) + "score: " + str(score2)
                 i+=1
+
